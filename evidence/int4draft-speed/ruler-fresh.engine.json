@@ -5,26 +5,26 @@
    "prompt": 735,
    "cached": 0,
    "tokens": 2637,
-   "rounds": 1329,
-   "accepted": 1296,
-   "proposed": 1422,
-   "tokens_a_round": 1.984,
-   "drafts_a_round": 1.07,
-   "accept_rate": 0.9114,
-   "ms_a_round": 24.76
+   "rounds": 1324,
+   "accepted": 1301,
+   "proposed": 1427,
+   "tokens_a_round": 1.992,
+   "drafts_a_round": 1.078,
+   "accept_rate": 0.9117,
+   "ms_a_round": 22.67
   },
   "2": {
    "requests": 25,
    "prompt": 1502,
    "cached": 0,
    "tokens": 5470,
-   "rounds": 5302,
-   "accepted": 143,
+   "rounds": 5303,
+   "accepted": 142,
    "proposed": 143,
-   "tokens_a_round": 1.032,
+   "tokens_a_round": 1.031,
    "drafts_a_round": 0.027,
-   "accept_rate": 1.0,
-   "ms_a_round": 27.75
+   "accept_rate": 0.993,
+   "ms_a_round": 25.12
   }
  }
 }

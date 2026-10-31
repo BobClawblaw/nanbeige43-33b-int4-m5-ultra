@@ -6,7 +6,7 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_31cf96059820420276113af2",
+    "id": "call_4186794e277485b99dfa7038",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -14,7 +14,7 @@
     }
    },
    {
-    "id": "call_3afd8504461a0d46cf36f6a1",
+    "id": "call_1643d171a11b184f4a59b23f",
     "type": "function",
     "function": {
      "name": "get_weather",
@@ -34,7 +34,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 4.298,
+  "seconds": 3.935,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
@@ -125,7 +125,7 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_1cd668e8ae16eeddace683e4",
+    "id": "call_e6a4515d140e2de327fbda9d",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -133,7 +133,7 @@
     }
    },
    {
-    "id": "call_a99c9d774061ddd798183cf6",
+    "id": "call_0b562140fc4b592a80633f8f",
     "type": "function",
     "function": {
      "name": "get_weather",
@@ -153,7 +153,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 2.884,
+  "seconds": 2.638,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
@@ -244,7 +244,7 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_8bf6f35560846b7fa16eb8b9",
+    "id": "call_b42395aaaad080cd1a675670",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -264,7 +264,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 2.675,
+  "seconds": 2.474,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
@@ -354,7 +354,7 @@
   },
   "plain_tool_calls": [
    {
-    "id": "call_3f78a5d4b986ab781765079d",
+    "id": "call_4fe6905edc3a4eb0353347ce",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -370,7 +370,7 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_e4f0549befba845fa7a7a20b",
+    "id": "call_941878e266602123bc389c5b",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -390,7 +390,7 @@
     "reasoning_tokens": 162
    }
   },
-  "seconds": 6.163,
+  "seconds": 5.54,
   "request": {
    "max_tokens": 3000,
    "temperature": 0,
@@ -491,7 +491,7 @@
      "name": "book_flight",
      "arguments": "{\"from\":\"Oslo\",\"to\":\"Rome\",\"cabin\":\"business\",\"passengers\":[{\"name\": \"Ana\", \"age\": 31}, {\"name\": \"Leo\", \"age\": 6}]}"
     },
-    "id": "call_0f2c986359c8f981b7fa1c65"
+    "id": "call_04acb30a3bebb0650ca26e73"
    }
   ],
   "text": "",
@@ -506,7 +506,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 2.222,
+  "seconds": 2.03,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
