@@ -1,0 +1,45 @@
+# The recipe's defaults. `local.toml` next to this file overrides them for one Mac (copy local.example.toml); an
+# environment variable of the same name in upper case overrides both (PORT=8896 python3 -m mac up).
+
+[model]
+# Nanbeige's own INT4 release as published (compressed-tensors int4 in groups of 32, 21.0 GiB; nothing is converted):
+# hf download Nanbeige/Nanbeige4.3-33B-INT4 --revision <model_revision> --local-dir <model_dir>
+model_repo = "Nanbeige/Nanbeige4.3-33B-INT4"
+model_revision = "d834b414cf1c47e42640de33c147b7cf8a9321ef"
+served_name = "nanbeige"
+model_dir = "~/models/Nanbeige4.3-33B-INT4"
+# The drafter: Nanbeige4.1-3B, a Llama on the same tokenizer, proposing each stream's next tokens for the 33B to verify;
+# replies keep the 33B's bits (README: Drafter). Served from its bf16 release as published (7.33 GiB):
+# hf download <drafter_repo> --revision <drafter_revision> --local-dir <drafter_dir>
+drafter_repo = "Nanbeige/Nanbeige4.1-3B"
+drafter_revision = "9c4555c37921c0982af8fffeee1e0a6e6b953c4f"
+drafter_dir = "~/models/Nanbeige4.1-3B"
+
+[engine]
+# TensorFold's native Metal engine with the llama family: a worktree of tensorfold_src at tensorfold_sha, built by
+# `python3 -m mac build` under tf_cache; `binary` names a built tensorfold-native instead
+tensorfold_src = "~/github/TensorFold"   # a clone holding tensorfold_sha (github.com/BobClawblaw/TensorFold)
+tensorfold_sha = "19c80efab69e235979e8e30270b0531ac543ff76"   # branch llama-int4 (PRs #1415 and #1417, then the INT4 reading)
+zig = "zig"                      # Zig 0.17.0
+zig_cpu = "native"
+binary = ""
+
+[local]
+host = "127.0.0.1"
+port = 8896
+tf_cache = "~/.cache/nanbeige43-33b-int4"
+
+[serve]
+context = 131072                 # a stream's window; the checkpoint allows 524288
+parallel = 2                     # streams decoded together, each reply equal to its run alone
+max_tokens = 65536               # a reply's default ceiling (thinking is on by default and counts)
+temperature = "1.0"              # the model card's agentic settings for requests that set none
+top_p = "0.95"
+top_k = "-1"
+prompt_cache_gib = 8             # kept prompt states between turns
+load_limit_gb = 150              # LLAMA_LOAD_LIMIT_GB: weights, scratch and every stream's caches (0: 75% of RAM)
+drafts = true                    # drafted windows (replies are identical with them off)
+drafter = true                   # Nanbeige4.1-3B's drafts (--drafter); false: the lane engine's copy drafts alone
+keep_warm = 86400
+api_key = ""
+extra_args = ""

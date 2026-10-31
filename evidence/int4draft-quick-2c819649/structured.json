@@ -1,0 +1,838 @@
+{
+ "json_object/greedy": {
+  "text": "{\n  \"name\": \"Whiskers\",\n  \"species\": \"cat\",\n  \"color\": \"orange tabby\",\n  \"age\": 3,\n  \"traits\": [\n    \"curious\",\n    \"independent\",\n    \"playful\",\n    \"soft-spoken\"\n  ],\n  \"favorite_activities\": [\n    \"chasing laser pointers\",\n    \"sleeping in warm sunbeams\",\n    \"scratching cardboard boxes\"\n  ],\n  \"personality_summary\": \"A charming cat who balances independence with affectionate moments, always ready to purr when content.\"\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 45,
+   "completion_tokens": 138,
+   "total_tokens": 183,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 3.74,
+  "prompt": "Describe a cat as JSON with a few fields.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "response_format": {
+    "type": "json_object"
+   },
+   "temperature": 0
+  },
+  "plain_text": "{\n  \"name\": \"Whiskers\",\n  \"species\": \"cat\",\n  \"color\": \"orange tabby\",\n  \"age\": 3,\n  \"traits\": [\n    \"curious\",\n    \"independent\",\n    \"playful\",\n    \"soft-spoken\"\n  ],\n  \"favorite_activities\": [\n    \"chasing laser pointers\",\n    \"sleeping in warm sunbeams\",\n    \"scratching cardboard boxes\"\n  ],\n  \"personality_summary\": \"A charming cat who balances independence with affectionate moments, always ready to purr when content.\"\n}",
+  "plain_seconds": 3.592,
+  "plain_usage": {
+   "prompt_tokens": 45,
+   "completion_tokens": 138,
+   "total_tokens": 183,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "json_object/sampled": {
+  "text": "{\n  \"name\": \"Whiskers\",\n  \"type\": \"domestic_cat\",\n  \"physical_attributes\": {\n    \"fur_color\": \"orange\",\n    \"eye_color\": \"green\",\n    \"weight_kg\": 4.2,\n    \"height_cm\": 28\n  },\n  \"personality\": {\n    \"traits\": [\"curious\", \"playful\", \"independent\"],\n    \"makes_noise\": \"purr\",\n    \"loves\": [\"catnip\", \"sunbeams\"]\n  },\n  \"behavior\": {\n    \"sleeps_hours_per_day\": 16,\n    \"hunting_instinct\": true,\n",
+  "finish": "length",
+  "ok": null,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 45,
+   "completion_tokens": 160,
+   "total_tokens": 205,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 5.183,
+  "prompt": "Describe a cat as JSON with a few fields.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "response_format": {
+    "type": "json_object"
+   },
+   "temperature": 0.8,
+   "top_k": 20,
+   "top_p": 0.95,
+   "seed": 3
+  },
+  "plain_text": "{\n  \"name\": \"Whiskers\",\n  \"type\": \"domestic_cat\",\n  \"physical_attributes\": {\n    \"fur_color\": \"orange\",\n    \"eye_color\": \"green\",\n    \"weight_kg\": 4.2,\n    \"height_cm\": 28\n  },\n  \"personality\": {\n    \"traits\": [\"curious\", \"playful\", \"independent\"],\n    \"makes_noise\": \"purr\",\n    \"loves\": [\"catnip\", \"sunbeams\"]\n  },\n  \"behavior\": {\n    \"sleeps_hours_per_day\": 16,\n    \"hunting_instinct\": true,\n",
+  "plain_seconds": 5.282,
+  "plain_usage": {
+   "prompt_tokens": 45,
+   "completion_tokens": 160,
+   "total_tokens": 205,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "json_object/thinking": {
+  "text": "{\n  \"name\": \"Whiskers\",\n  \"species\": \"cat\",\n  \"traits\": [\"soft fur\", \"sharp claws\", \"quiet purr\"],\n  \"behavior\": \"independent and playful\"\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 41,
+   "completion_tokens": 104,
+   "total_tokens": 145,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 54
+   }
+  },
+  "seconds": 2.78,
+  "prompt": "Describe a cat as JSON with a few fields.",
+  "request": {
+   "max_tokens": 400,
+   "chat_template_kwargs": {
+    "enable_thinking": true
+   },
+   "response_format": {
+    "type": "json_object"
+   },
+   "temperature": 0
+  }
+ },
+ "json_schema/greedy": {
+  "text": "{\n  \"name\": \"Dr. Elif Vardhana\",\n  \"age\": 38,\n  \"hobbies\": [\"Urban foraging\", \"Analog photography\", \"Restoring vintage clocks, collecting obscure regional teas, and writing field notes on the quiet corners of cities.\"]\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 64,
+   "total_tokens": 103,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 1.869,
+  "prompt": "Invent a person.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+     "name": "p",
+     "schema": {
+      "type": "object",
+      "properties": {
+       "name": {
+        "type": "string"
+       },
+       "age": {
+        "type": "integer"
+       },
+       "hobbies": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 3
+       }
+      },
+      "required": [
+       "name",
+       "age",
+       "hobbies"
+      ],
+      "additionalProperties": false
+     }
+    }
+   },
+   "temperature": 0
+  },
+  "plain_text": "{\n  \"name\": \"Dr. Elif Vardhana\",\n  \"age\": 38,\n  \"hobbies\": [\"Urban foraging\", \"Analog photography\", \"Restoring vintage clocks, collecting obscure regional teas, and writing field notes on the quiet corners of cities.\"]\n}",
+  "plain_seconds": 1.777,
+  "plain_usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 64,
+   "total_tokens": 103,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "json_schema/sampled": {
+  "text": "{\n  \"name\": \"Dr. Elif Vardhana\",\n  \"age\": 34,\n  \"hobbies\": [\n    \"Urban foraging\",\n    \"Restoring vintage typewriters\",\n    \"Field recording in abandoned train stations\"\n  ]\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 62,
+   "total_tokens": 101,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 1.889,
+  "prompt": "Invent a person.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+     "name": "p",
+     "schema": {
+      "type": "object",
+      "properties": {
+       "name": {
+        "type": "string"
+       },
+       "age": {
+        "type": "integer"
+       },
+       "hobbies": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 3
+       }
+      },
+      "required": [
+       "name",
+       "age",
+       "hobbies"
+      ],
+      "additionalProperties": false
+     }
+    }
+   },
+   "temperature": 0.8,
+   "top_k": 20,
+   "top_p": 0.95,
+   "seed": 3
+  },
+  "plain_text": "{\n  \"name\": \"Dr. Elif Vardhana\",\n  \"age\": 34,\n  \"hobbies\": [\n    \"Urban foraging\",\n    \"Restoring vintage typewriters\",\n    \"Field recording in abandoned train stations\"\n  ]\n}",
+  "plain_seconds": 2.068,
+  "plain_usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 62,
+   "total_tokens": 101,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "json_schema/thinking": {
+  "text": "{\n  \"name\": \"Mara Venn\",\n  \"age\": 34,\n  \"hobbies\": [\"repairing old radios\", \"collecting maps of imaginary places\", \"baking bread with herbs from her balcony garden.\"]\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 35,
+   "completion_tokens": 162,
+   "total_tokens": 197,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 107
+   }
+  },
+  "seconds": 4.458,
+  "prompt": "Invent a person.",
+  "request": {
+   "max_tokens": 400,
+   "chat_template_kwargs": {
+    "enable_thinking": true
+   },
+   "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+     "name": "p",
+     "schema": {
+      "type": "object",
+      "properties": {
+       "name": {
+        "type": "string"
+       },
+       "age": {
+        "type": "integer"
+       },
+       "hobbies": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 3
+       }
+      },
+      "required": [
+       "name",
+       "age",
+       "hobbies"
+      ],
+      "additionalProperties": false
+     }
+    }
+   },
+   "temperature": 0
+  }
+ },
+ "guided_json/greedy": {
+  "text": "{\n  \"name\": \"Mira Solano\",\n  \"age\": 34,\n  \"hobbies\": [\"marine biology\", \"kayaking\", \"whale watching trips, collecting sea glass, and writing ocean-themed poetry.\"]\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 43,
+   "completion_tokens": 57,
+   "total_tokens": 100,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 1.616,
+  "prompt": "Invent a person who likes the sea.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_json": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "age": {
+      "type": "integer"
+     },
+     "hobbies": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "maxItems": 3
+     }
+    },
+    "required": [
+     "name",
+     "age",
+     "hobbies"
+    ],
+    "additionalProperties": false
+   },
+   "temperature": 0
+  },
+  "plain_text": "{\n  \"name\": \"Mira Solano\",\n  \"age\": 34,\n  \"hobbies\": [\"marine biology\", \"kayaking\", \"whale watching trips, collecting sea glass, and writing ocean-themed poetry.\"]\n}",
+  "plain_seconds": 1.625,
+  "plain_usage": {
+   "prompt_tokens": 43,
+   "completion_tokens": 57,
+   "total_tokens": 100,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "guided_json/sampled": {
+  "text": "{\n  \"name\": \"Mira Solano\",\n  \"age\": 34,\n  \"hobbies\": [\n    \"Swimming\",\n    \"Kite flying by the coast\",\n    \"Collecting sea glass\"\n  ]\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 43,
+   "completion_tokens": 58,
+   "total_tokens": 101,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 1.65,
+  "prompt": "Invent a person who likes the sea.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_json": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "age": {
+      "type": "integer"
+     },
+     "hobbies": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "maxItems": 3
+     }
+    },
+    "required": [
+     "name",
+     "age",
+     "hobbies"
+    ],
+    "additionalProperties": false
+   },
+   "temperature": 0.8,
+   "top_k": 20,
+   "top_p": 0.95,
+   "seed": 3
+  },
+  "plain_text": "{\n  \"name\": \"Mira Solano\",\n  \"age\": 34,\n  \"hobbies\": [\n    \"Swimming\",\n    \"Kite flying by the coast\",\n    \"Collecting sea glass\"\n  ]\n}",
+  "plain_seconds": 1.907,
+  "plain_usage": {
+   "prompt_tokens": 43,
+   "completion_tokens": 58,
+   "total_tokens": 101,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "guided_json/thinking": {
+  "text": "{\n  \"name\": \"Mara Selby\",\n  \"age\": 28,\n  \"hobbies\": [\"swimming\", \"collecting sea glass\", \"tidal photography, \"\n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n\n]\n}",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 134,
+   "total_tokens": 173,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 66
+   }
+  },
+  "seconds": 3.518,
+  "prompt": "Invent a person who likes the sea.",
+  "request": {
+   "max_tokens": 400,
+   "chat_template_kwargs": {
+    "enable_thinking": true
+   },
+   "guided_json": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "age": {
+      "type": "integer"
+     },
+     "hobbies": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "maxItems": 3
+     }
+    },
+    "required": [
+     "name",
+     "age",
+     "hobbies"
+    ],
+    "additionalProperties": false
+   },
+   "temperature": 0
+  }
+ },
+ "regex/greedy": {
+  "text": "(555) 123-4567",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 15,
+   "total_tokens": 57,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 0.587,
+  "prompt": "Give me a US phone number.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_regex": "\\(\\d{3}\\) \\d{3}-\\d{4}",
+   "temperature": 0
+  },
+  "plain_text": "(555) 123-4567",
+  "plain_seconds": 0.602,
+  "plain_usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 15,
+   "total_tokens": 57,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "regex/sampled": {
+  "text": "(555) 123-4567",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 15,
+   "total_tokens": 57,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 0.491,
+  "prompt": "Give me a US phone number.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_regex": "\\(\\d{3}\\) \\d{3}-\\d{4}",
+   "temperature": 0.8,
+   "top_k": 20,
+   "top_p": 0.95,
+   "seed": 3
+  },
+  "plain_text": "(555) 123-4567",
+  "plain_seconds": 0.621,
+  "plain_usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 15,
+   "total_tokens": 57,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "regex/thinking": {
+  "text": "(555) 123-4567",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 38,
+   "completion_tokens": 278,
+   "total_tokens": 316,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 263
+   }
+  },
+  "seconds": 6.867,
+  "prompt": "Give me a US phone number.",
+  "request": {
+   "max_tokens": 400,
+   "chat_template_kwargs": {
+    "enable_thinking": true
+   },
+   "guided_regex": "\\(\\d{3}\\) \\d{3}-\\d{4}",
+   "temperature": 0
+  }
+ },
+ "choice/greedy": {
+  "text": "no",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 2,
+   "total_tokens": 44,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 0.341,
+  "prompt": "Is the sky green? Answer.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_choice": [
+    "yes",
+    "no",
+    "it depends"
+   ],
+   "temperature": 0
+  },
+  "plain_text": "no",
+  "plain_seconds": 0.292,
+  "plain_usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 2,
+   "total_tokens": 44,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "choice/sampled": {
+  "text": "no",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 2,
+   "total_tokens": 44,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 0.294,
+  "prompt": "Is the sky green? Answer.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_choice": [
+    "yes",
+    "no",
+    "it depends"
+   ],
+   "temperature": 0.8,
+   "top_k": 20,
+   "top_p": 0.95,
+   "seed": 3
+  },
+  "plain_text": "no",
+  "plain_seconds": 0.296,
+  "plain_usage": {
+   "prompt_tokens": 42,
+   "completion_tokens": 2,
+   "total_tokens": 44,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "choice/thinking": {
+  "text": "no",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 38,
+   "completion_tokens": 88,
+   "total_tokens": 126,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 85
+   }
+  },
+  "seconds": 3.257,
+  "prompt": "Is the sky green? Answer.",
+  "request": {
+   "max_tokens": 400,
+   "chat_template_kwargs": {
+    "enable_thinking": true
+   },
+   "guided_choice": [
+    "yes",
+    "no",
+    "it depends"
+   ],
+   "temperature": 0
+  }
+ },
+ "grammar/greedy": {
+  "text": "1, 2, 3, 4, 5",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 14,
+   "total_tokens": 53,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 0.583,
+  "prompt": "Count to five.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_grammar": "root ::= num (\", \" num)*\nnum ::= [1-9]",
+   "temperature": 0
+  },
+  "plain_text": "1, 2, 3, 4, 5",
+  "plain_seconds": 0.578,
+  "plain_usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 14,
+   "total_tokens": 53,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "grammar/sampled": {
+  "text": "1, 2, 3, 4, 5",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 14,
+   "total_tokens": 53,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "seconds": 0.492,
+  "prompt": "Count to five.",
+  "request": {
+   "max_tokens": 160,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   },
+   "guided_grammar": "root ::= num (\", \" num)*\nnum ::= [1-9]",
+   "temperature": 0.8,
+   "top_k": 20,
+   "top_p": 0.95,
+   "seed": 3
+  },
+  "plain_text": "1, 2, 3, 4, 5",
+  "plain_seconds": 0.594,
+  "plain_usage": {
+   "prompt_tokens": 39,
+   "completion_tokens": 14,
+   "total_tokens": 53,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ },
+ "grammar/thinking": {
+  "text": "1, 2, 3, 4, 5",
+  "finish": "stop",
+  "ok": true,
+  "status": 200,
+  "usage": {
+   "prompt_tokens": 35,
+   "completion_tokens": 60,
+   "total_tokens": 95,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 46
+   }
+  },
+  "seconds": 1.808,
+  "prompt": "Count to five.",
+  "request": {
+   "max_tokens": 400,
+   "chat_template_kwargs": {
+    "enable_thinking": true
+   },
+   "guided_grammar": "root ::= num (\", \" num)*\nnum ::= [1-9]",
+   "temperature": 0
+  }
+ },
+ "bad_regex_status": 400,
+ "bad_regex_error": "{\"error\": {\"message\": \"guided_regex: the grammar cannot be enforced: Regex parsing error at position 10: The parenthesis is not closed.\", \"type\": \"invalid_request_error\"}}"
+}

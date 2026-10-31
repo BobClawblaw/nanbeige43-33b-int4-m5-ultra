@@ -1,0 +1,62 @@
+"""The engine: a worktree of the TensorFold checkout at the pinned commit, built under tf_cache (never in the
+checkout), and libtfgrammar (structured output and required tool calls) from xgrammar at the tag the engine pins."""
+
+import subprocess
+from pathlib import Path
+
+from .config import Settings
+
+# xgrammar's release the engine's structured output is built against (zig/build/grammar.zig pins the tag), and its commit
+XGRAMMAR_TAG = "v0.2.8"
+XGRAMMAR_COMMIT = "97787376faee5ed8466cfad57c99855e4ce2f6aa"
+XGRAMMAR_REPO = "https://github.com/mlc-ai/xgrammar"
+
+# where tensorfold_sha lives until the llama family merges upstream
+FORK_REPO = "https://github.com/BobClawblaw/TensorFold"
+FORK_BRANCH = "llama-int4"
+
+
+def _run(cmd: list[str], cwd: Path | None = None) -> None:
+    print("+", " ".join(cmd), flush=True)
+    subprocess.run(cmd, cwd=cwd, check=True)
+
+
+def build_engine(s: Settings, rebuild: bool = False) -> Path:
+    if s.binary:
+        return s.run_binary
+    if not s.tensorfold_sha:
+        raise SystemExit("no tensorfold_sha pinned (local.toml)")
+    src = s.path(s.tensorfold_src)
+    have = subprocess.run(["git", "-C", str(src), "cat-file", "-e", f"{s.tensorfold_sha}^{{commit}}"], capture_output=True)
+    if have.returncode != 0:  # a clone of upstream TensorFold: the commit is on the fork until it merges
+        # by its hash first, which outlives a rebase of the branch; then the branch, for a git that cannot ask for one
+        if subprocess.run(["git", "-C", str(src), "fetch", FORK_REPO, s.tensorfold_sha]).returncode != 0:
+            _run(["git", "-C", str(src), "fetch", FORK_REPO, FORK_BRANCH])
+    if not s.worktree.exists():
+        s.worktree.parent.mkdir(parents=True, exist_ok=True)
+        _run(["git", "-C", str(src), "worktree", "add", "--detach", str(s.worktree), s.tensorfold_sha])
+    if rebuild or not s.built_binary.exists():
+        _run([s.path(s.zig).as_posix(), "build", "native", "-Doptimize=ReleaseFast", f"-Dcpu={s.zig_cpu}"], cwd=s.worktree)
+    return s.built_binary
+
+
+def build_grammar(s: Settings, rebuild: bool = False) -> Path:
+    """libtfgrammar beside the binary (the server loads it at the first structured request): xgrammar cloned once into
+    tf_cache with its submodules, then zig build grammar in the worktree."""
+    if s.binary or (s.built_grammar.exists() and not rebuild):
+        return s.built_grammar
+    root = s.cache / f"xgrammar-{XGRAMMAR_TAG}"
+    if not (root / ".git").exists():
+        _run(["git", "clone", "--branch", XGRAMMAR_TAG, "--recurse-submodules", XGRAMMAR_REPO, str(root)])
+    head = subprocess.run(["git", "-C", str(root), "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
+    if head != XGRAMMAR_COMMIT:
+        raise SystemExit(f"{root} is at {head[:8]}, not xgrammar {XGRAMMAR_TAG}'s {XGRAMMAR_COMMIT[:8]}; remove it to clone again")
+    _run([s.path(s.zig).as_posix(), "build", "grammar", f"-Dxgrammar={root}", f"-Dcpu={s.zig_cpu}"], cwd=s.worktree)
+    if not s.built_grammar.exists():
+        raise SystemExit(f"the build left no {s.built_grammar}")
+    return s.built_grammar
+
+
+def build(s: Settings, rebuild: bool = False) -> None:
+    build_engine(s, rebuild)
+    build_grammar(s, rebuild)

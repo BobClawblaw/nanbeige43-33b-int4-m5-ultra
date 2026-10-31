@@ -1,0 +1,12 @@
+# Copy to local.toml (git-ignored) and change what differs on this Mac.
+[model]
+model_dir = "~/models/Nanbeige4.3-33B-INT4"
+drafter_dir = "~/models/Nanbeige4.1-3B"      # the drafter's bf16 release
+
+[engine]
+tensorfold_src = "~/github/TensorFold"   # a clone of github.com/BobClawblaw/TensorFold holding tensorfold_sha
+zig = "~/tools/zig-0.17.0/zig"
+
+[local]
+host = "127.0.0.1"
+port = 8896
