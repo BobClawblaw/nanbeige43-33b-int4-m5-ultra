@@ -1,16 +1,16 @@
 # Nanbeige4.3-33B-INT4 on one M5 Ultra (TensorFold native, Nanbeige's own INT4 release)
 
-Serves [Nanbeige4.3-33B-INT4](https://huggingface.co/Nanbeige/Nanbeige4.3-33B-INT4), Nanbeige's own int4 release of
-its 33B dense Llama-architecture model (512K-token context), as published, with TensorFold's native Metal engine, as
-an OpenAI-compatible server with reasoning, tool calls, structured output, the prompt cache and two streams, with
+Serves [Nanbeige4.3-33B-INT4](https://huggingface.co/Nanbeige/Nanbeige4.3-33B-INT4), Nanbeige's own int4 release of its
+33B dense Llama-architecture model (512K-token context), as published, with TensorFold's native Metal engine, as an
+OpenAI-compatible server with reasoning, tool calls, structured output, the prompt cache and two streams, and optionally
 [Nanbeige4.1-3B](https://huggingface.co/Nanbeige/Nanbeige4.1-3B) drafting for it from its bf16 release (replies
-unchanged). Nothing is converted: the checkpoint's packed int4 weights (21.0 GiB) are read in place.
+unchanged; off by default). Nothing is converted: the checkpoint's packed int4 weights (21.0 GiB) are read in place.
 
 The INT4 release is the fast one: one stream decodes at 47-48 tokens/s against 16.3 for the bf16 release; with the
-drafter, 87-89 on the harness's ruler, but about 6% slower than without it on ordinary chats
-([drafter](#drafter-nanbeige41-3b)). Its quantization is Nanbeige's, and it costs something against the bf16
-release (mean KL 0.087, top-1 90.8%, [below](#quality-what-the-int4-release-costs)); for the exact model, serve the
-bf16 release with [nanbeige43-33b-bf16-m5-ultra](https://github.com/BobClawblaw/nanbeige43-33b-bf16-m5-ultra).
+drafter, 87-89 on the harness's ruler, but about 6% slower than without it on ordinary chats, so it is off by default
+([drafter](#drafter-nanbeige41-3b)). Its quantization is Nanbeige's, and it costs something against the bf16 release
+(mean KL 0.087, top-1 90.8%, [below](#quality-what-the-int4-release-costs)); for the exact model, serve the bf16 release
+with [nanbeige43-33b-bf16-m5-ultra](https://github.com/BobClawblaw/nanbeige43-33b-bf16-m5-ultra).
 
 The engine's `llama` Metal family is under review upstream as
 [ashhart/TensorFold#1415](https://github.com/ashhart/TensorFold/pull/1415) (the family) and
@@ -26,7 +26,7 @@ Python 3.11+, git, `hf` and [Zig 0.17.0](https://ziglang.org/download/).
 ```bash
 git clone https://github.com/BobClawblaw/TensorFold ~/github/TensorFold
 hf download Nanbeige/Nanbeige4.3-33B-INT4 --revision d834b414cf1c47e42640de33c147b7cf8a9321ef --local-dir ~/models/Nanbeige4.3-33B-INT4
-hf download Nanbeige/Nanbeige4.1-3B --revision 9c4555c37921c0982af8fffeee1e0a6e6b953c4f --local-dir ~/models/Nanbeige4.1-3B
+hf download Nanbeige/Nanbeige4.1-3B --revision 9c4555c37921c0982af8fffeee1e0a6e6b953c4f --local-dir ~/models/Nanbeige4.1-3B  # only for drafter = true
 cp local.example.toml local.toml      # then set zig (and paths, if yours differ)
 python3 -m mac build                  # the pinned engine and libtfgrammar, under ~/.cache/nanbeige43-33b-int4
 python3 -m mac up                     # http://127.0.0.1:8896/v1, model "nanbeige"
@@ -51,7 +51,7 @@ name in upper case overrides both (`PORT=8888 HOST=0.0.0.0 python3 -m mac up`).
 | `prompt_cache_gib` | 8 | kept prompt states between turns; they give way to streams |
 | `load_limit_gb` | 150 | weights, scratch and every stream's caches together (`LLAMA_LOAD_LIMIT_GB`; 0: 75% of RAM) |
 | `drafts` | true | drafted windows (replies are identical with them off) |
-| `drafter` | true | Nanbeige4.1-3B proposing the next tokens, verified by the 33B ([drafter](#drafter-nanbeige41-3b)); false: the lane engine's copy drafts alone |
+| `drafter` | false | true: Nanbeige4.1-3B proposing the next tokens, verified by the 33B ([drafter](#drafter-nanbeige41-3b)); false: the lane engine's copy drafts alone |
 
 **Memory.** The weights take 21.0 GiB, plus 301 MiB of scratch where prompt chunks make each projection's bf16
 weights. Every one of the 52 layers keeps bf16 keys and values, 208 KiB a token: 26 GiB a stream at 131,072, 104 GiB
@@ -93,7 +93,7 @@ changes no bits to the earlier e269c888: the 1,500-position logits of both relea
   4.57.1, bf16 on the CPU) is further from it: KL 0.0346, top-1 96.6%. One-row steps and 16-row windows give the same
   logits bit for bit after a 1,500-token prompt. Seeded sampling repeats (9/9).
 - **Long context.** A passphrase at 10%, 50% and 90% of a 128,579-token prompt comes back exactly (3/3, greedy,
-  thinking off) on this recipe's default server (131,072-token window, drafter on), run on engine e269c888; the cold
+  thinking off) on this recipe's server (131,072-token window, drafter on), run on engine e269c888; the cold
   prompt takes 254 s to the first token (506 tokens/s). Cold prompts to 61,502 tokens
   run at 842-1,259 tokens/s (`evidence/int4-prefill`).
 - **Tools and structured output.** The harness's structured check (json_object, json_schema, regex, choice,
@@ -131,10 +131,10 @@ the drafter, `nanbeige43-33b-int4draft-m5`), greedy, 256-token replies, engine d
 
 | | streams | prose | code | structured | list | first token |
 |---|---:|---:|---:|---:|---:|---:|
-| undrafted | 1 | 47.8 | 46.6 | 47.7 | 47.5 | 0.27-0.30 s |
-| undrafted | 2 | 82.3 | 56.9 | 81.3 | 82.1 | 0.40-0.45 s |
-| drafted (default) | 1 | 87.7 | 87.1 | 88.4 | 88.2 | 0.27-0.30 s |
-| drafted (default) | 2 | 82.2 | 82.4 | 81.4 | 82.4 | 0.40-0.45 s |
+| undrafted (default) | 1 | 47.8 | 46.6 | 47.7 | 47.5 | 0.27-0.30 s |
+| undrafted (default) | 2 | 82.3 | 56.9 | 81.3 | 82.1 | 0.40-0.45 s |
+| drafted | 1 | 87.7 | 87.1 | 88.4 | 88.2 | 0.27-0.30 s |
+| drafted | 2 | 82.2 | 82.4 | 81.4 | 82.4 | 0.40-0.45 s |
 
 Tokens a second, all streams together (`evidence/int4-speed`, `evidence/int4draft-speed`). Undrafted, one stream reads
 the 21 GiB of weights each step (21.2 ms), 2.9 times the bf16 release's 16.3 tokens/s (reading them at the bf16
@@ -184,8 +184,9 @@ equal to the plain one token for token:
 
 On these chats it costs about 6% (43.6 tokens/s drafted against 46.6 plain on average, -18% to +1% a prompt). Text the
 reply continues predictably, such as the ruler's repetitive texts, is where it pays: 87-89 tokens/s against 47-48
-(replies that copy or edit given text should gain the same way, but were not measured). The drafter is on by default;
-`drafter = false` saves its 7.33 GiB and caches and gives the plain speed everywhere.
+(replies that copy or edit given text should gain the same way, but were not measured). The drafter is off by
+default, which saves its 7.33 GiB and caches and gives the plain speed everywhere; `drafter = true` turns it on for
+workloads like those.
 
 After a long prompt the drafter reads the prompt itself before it drafts, which it does only after the 33B's first
 token: the first token keeps its time, but the second waits for the drafter. On the 128,579-token passphrase prompts,

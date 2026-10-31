@@ -34,7 +34,7 @@ class Settings:
     prompt_cache_gib: float = 8
     load_limit_gb: float = 150
     drafts: bool = True
-    drafter: bool = True
+    drafter: bool = False
     keep_warm: int = 86400
     api_key: str = ""
     extra_args: str = ""
