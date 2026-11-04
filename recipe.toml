@@ -8,18 +8,12 @@ model_repo = "Nanbeige/Nanbeige4.3-33B-INT4"
 model_revision = "d834b414cf1c47e42640de33c147b7cf8a9321ef"
 served_name = "nanbeige"
 model_dir = "~/models/Nanbeige4.3-33B-INT4"
-# The drafter: Nanbeige4.1-3B, a Llama on the same tokenizer, proposing each stream's next tokens for the 33B to verify;
-# replies keep the 33B's bits (README: Drafter). Served from its bf16 release as published (7.33 GiB):
-# hf download <drafter_repo> --revision <drafter_revision> --local-dir <drafter_dir>
-drafter_repo = "Nanbeige/Nanbeige4.1-3B"
-drafter_revision = "9c4555c37921c0982af8fffeee1e0a6e6b953c4f"
-drafter_dir = "~/models/Nanbeige4.1-3B"
 
 [engine]
 # TensorFold's native Metal engine with the llama family: a worktree of tensorfold_src at tensorfold_sha, built by
 # `python3 -m mac build` under tf_cache; `binary` names a built tensorfold-native instead
-tensorfold_src = "~/github/TensorFold"   # a clone holding tensorfold_sha (github.com/BobClawblaw/TensorFold)
-tensorfold_sha = "d8ba679039d29fa175cdade043161f23e86daefd"   # branch llama-int4 (PRs #1415 and #1417, then the INT4 reading)
+tensorfold_src = "~/github/TensorFold"   # a clone holding tensorfold_sha (github.com/ashhart/TensorFold)
+tensorfold_sha = "b331731e645e91a3704ed3b18d4351a80fe006ad"   # upstream main, with the llama family and the INT4 reading (#1782)
 zig = "zig"                      # Zig 0.17.0
 zig_cpu = "native"
 binary = ""
@@ -39,7 +33,6 @@ top_k = "-1"
 prompt_cache_gib = 8             # kept prompt states between turns
 load_limit_gb = 150              # LLAMA_LOAD_LIMIT_GB: weights, scratch and every stream's caches (0: 75% of RAM)
 drafts = true                    # drafted windows (replies are identical with them off)
-drafter = false                  # true: Nanbeige4.1-3B's drafts (--drafter); off by default, it costs ordinary chats ~6%
 keep_warm = 86400
 api_key = ""
 extra_args = ""

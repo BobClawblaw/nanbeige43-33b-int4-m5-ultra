@@ -2,8 +2,8 @@
  "turn1": {
   "status": 200,
   "text": "Here are three rivers in Europe:\n\n1. **Rhine** \u2013 flows through Switzerland, Germany, and the Netherlands.\n2. **Danube** \u2013 the second-longest river in Europe, flowing through ten countries from Germany",
-  "ttft": 5.144,
-  "ttft_any": 5.144,
+  "ttft": 5.188,
+  "ttft_any": 5.188,
   "usage": {
    "prompt_tokens": 5511,
    "completion_tokens": 48,
@@ -15,15 +15,15 @@
     "reasoning_tokens": 0
    }
   },
-  "s": 6.203,
+  "s": 6.246,
   "finish": "length",
   "tool_calls": null
  },
  "turn2": {
   "status": 200,
   "text": "Of the three rivers named (Rhine, Danube, and Volga), the **Danube** is the longest.\n\n* **Danube**: approximately **2,850 km** (about 1,770",
-  "ttft": 0.348,
-  "ttft_any": 0.348,
+  "ttft": 0.353,
+  "ttft_any": 0.353,
   "usage": {
    "prompt_tokens": 5581,
    "completion_tokens": 48,
@@ -35,15 +35,15 @@
     "reasoning_tokens": 0
    }
   },
-  "s": 1.406,
+  "s": 1.411,
   "finish": "length",
   "tool_calls": null
  },
  "turn3": {
   "status": 200,
   "text": "Of the three rivers named (Rhine, Danube, and Volga), the **Rhine** is the shortest.\n\n* **Rhine**: approximately **1,230 km** (about 765 miles).",
-  "ttft": 0.379,
-  "ttft_any": 0.379,
+  "ttft": 0.382,
+  "ttft_any": 0.382,
   "usage": {
    "prompt_tokens": 5649,
    "completion_tokens": 48,
@@ -55,15 +55,15 @@
     "reasoning_tokens": 0
    }
   },
-  "s": 1.271,
+  "s": 1.273,
   "finish": "length",
   "tool_calls": null
  },
  "turn3_again": {
   "status": 200,
   "text": "Of the three rivers named (Rhine, Danube, and Volga), the **Rhine** is the shortest.\n\n* **Rhine**: approximately **1,230 km** (about 765 miles).",
-  "ttft": 0.381,
-  "ttft_any": 0.381,
+  "ttft": 0.384,
+  "ttft_any": 0.384,
   "usage": {
    "prompt_tokens": 5649,
    "completion_tokens": 48,
@@ -75,15 +75,15 @@
     "reasoning_tokens": 0
    }
   },
-  "s": 1.272,
+  "s": 1.276,
   "finish": "length",
   "tool_calls": null
  },
  "turn3_cold": {
   "status": 200,
   "text": "Of the three rivers named (Rhine, Danube, and Volga), the **Rhine** is the shortest.\n\n* **Rhine**: approximately **1,230 km** (about 765 miles).",
-  "ttft": 4.611,
-  "ttft_any": 4.611,
+  "ttft": 4.734,
+  "ttft_any": 4.734,
   "usage": {
    "prompt_tokens": 5649,
    "completion_tokens": 48,
@@ -95,7 +95,7 @@
     "reasoning_tokens": 0
    }
   },
-  "s": 5.504,
+  "s": 5.627,
   "finish": "length",
   "tool_calls": null
  }

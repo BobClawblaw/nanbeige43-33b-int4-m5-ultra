@@ -11,7 +11,7 @@
    "tokens_a_round": 1.005,
    "drafts_a_round": 0.017,
    "accept_rate": 0.0,
-   "ms_a_round": 21.2
+   "ms_a_round": 21.18
   },
   "2": {
    "requests": 25,
@@ -24,7 +24,7 @@
    "tokens_a_round": 1.023,
    "drafts_a_round": 0.059,
    "accept_rate": 0.3048,
-   "ms_a_round": 27.03
+   "ms_a_round": 27.02
   }
  }
 }

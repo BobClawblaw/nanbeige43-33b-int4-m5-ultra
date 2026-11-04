@@ -14,9 +14,6 @@ class Settings:
     model_revision: str = ""
     served_name: str = ""
     model_dir: str = ""
-    drafter_repo: str = ""
-    drafter_revision: str = ""
-    drafter_dir: str = ""
     tensorfold_src: str = ""
     tensorfold_sha: str = ""
     zig: str = "zig"
@@ -34,7 +31,7 @@ class Settings:
     prompt_cache_gib: float = 8
     load_limit_gb: float = 150
     drafts: bool = True
-    drafter: bool = False
+    drafter: bool = False  # refused: an old local.toml's drafter = true
     keep_warm: int = 86400
     api_key: str = ""
     extra_args: str = ""
@@ -48,16 +45,9 @@ class Settings:
         """The served checkpoint: the INT4 release as downloaded."""
         return self.path(self.model_dir)
 
-    @property
-    def drafter_model(self) -> Path:
-        """The drafter the server loads: its bf16 release as downloaded."""
-        return self.path(self.drafter_dir)
-
-    def download(self, which: str) -> str:
-        """The pinned `hf download` command for `which`: the served checkpoint or the drafter."""
-        repo, rev, d = ((self.drafter_repo, self.drafter_revision, self.drafter_dir) if which == "drafter"
-                        else (self.model_repo, self.model_revision, self.model_dir))
-        return f"hf download {repo} --revision {rev} --local-dir {d}"
+    def download(self) -> str:
+        """The pinned `hf download` command for the served checkpoint."""
+        return f"hf download {self.model_repo} --revision {self.model_revision} --local-dir {self.model_dir}"
 
     @property
     def cache(self) -> Path:
@@ -102,8 +92,6 @@ class Settings:
                 a += [flag, value]
         if not self.drafts:
             a.append("--no-drafts")
-        elif self.drafter:
-            a += ["--drafter", str(self.drafter_model)]
         if self.api_key:
             a += ["--api-key", self.api_key]
         a += self.extra_args.split()
@@ -146,9 +134,10 @@ def validate(s: Settings) -> list[str]:
     if not s.binary and not s.tensorfold_sha:
         out.append("no engine: set tensorfold_sha (local.toml) or binary")
     if not (s.model / "config.json").exists():
-        out.append(f"no checkpoint at {s.model}: {s.download('model')}")
-    if s.drafts and s.drafter and not (s.drafter_model / "config.json").exists():
-        out.append(f"no drafter at {s.drafter_model}: {s.download('drafter')} (or drafter = false for the lane engine's copy drafts alone)")
+        out.append(f"no checkpoint at {s.model}: {s.download()}")
+    if s.drafter:
+        out.append("drafter = true: the engine refuses --drafter for this checkpoint, where drafts measured slower than "
+                   "plain decoding; remove it from local.toml")
     if s.parallel < 1 or s.parallel > 16:
         out.append("parallel must be 1 to 16")
     if s.context < 1 or s.context > 524288:

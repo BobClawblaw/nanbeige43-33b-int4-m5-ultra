@@ -6,15 +6,15 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_4186794e277485b99dfa7038",
+    "id": "call_b4c3f1ef895771bba28ed34f",
     "type": "function",
     "function": {
      "name": "book_flight",
-     "arguments": "{\"cabin\":\"business\",\"from\":\"Oslo\",\"passengers\":[{\"age\":31,\"name\":\"Ana\"},{\"age\":6,\"name\":\"Leo\"}],\"to\":\"Rome\"}"
+     "arguments": "{\"from\":\"Oslo\",\"to\":\"Rome\",\"cabin\":\"business\",\"passengers\":[{\"name\":\"Ana\",\"age\":31},{\"name\":\"Leo\",\"age\":6}]}"
     }
    },
    {
-    "id": "call_1643d171a11b184f4a59b23f",
+    "id": "call_63db49cfe60f22c03ed9b235",
     "type": "function",
     "function": {
      "name": "get_weather",
@@ -25,8 +25,8 @@
   "text": "I'll book the business class flight from Oslo to Rome for you and your son, and check the weather in Rome.",
   "usage": {
    "prompt_tokens": 496,
-   "completion_tokens": 148,
-   "total_tokens": 644,
+   "completion_tokens": 147,
+   "total_tokens": 643,
    "prompt_tokens_details": {
     "cached_tokens": 0
    },
@@ -34,7 +34,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 3.935,
+  "seconds": 3.88,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
@@ -125,7 +125,7 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_e6a4515d140e2de327fbda9d",
+    "id": "call_e4156f8dc7c8cbee60802b0e",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -133,7 +133,7 @@
     }
    },
    {
-    "id": "call_0b562140fc4b592a80633f8f",
+    "id": "call_2793865947ad0d1710b5c481",
     "type": "function",
     "function": {
      "name": "get_weather",
@@ -153,7 +153,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 2.638,
+  "seconds": 2.656,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
@@ -244,7 +244,7 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_b42395aaaad080cd1a675670",
+    "id": "call_a1af632f520896990d61491d",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -264,7 +264,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 2.474,
+  "seconds": 2.512,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
@@ -354,7 +354,7 @@
   },
   "plain_tool_calls": [
    {
-    "id": "call_4fe6905edc3a4eb0353347ce",
+    "id": "call_cf2577f3c767119b3d73aea4",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -370,7 +370,7 @@
   "finish": "tool_calls",
   "tool_calls": [
    {
-    "id": "call_941878e266602123bc389c5b",
+    "id": "call_19959c606ea38b9ffd133b87",
     "type": "function",
     "function": {
      "name": "book_flight",
@@ -390,7 +390,7 @@
     "reasoning_tokens": 162
    }
   },
-  "seconds": 5.54,
+  "seconds": 5.617,
   "request": {
    "max_tokens": 3000,
    "temperature": 0,
@@ -489,9 +489,9 @@
     "type": "function",
     "function": {
      "name": "book_flight",
-     "arguments": "{\"from\":\"Oslo\",\"to\":\"Rome\",\"cabin\":\"business\",\"passengers\":[{\"name\": \"Ana\", \"age\": 31}, {\"name\": \"Leo\", \"age\": 6}]}"
+     "arguments": "{\"from\":\"Oslo\",\"to\":\"Rome\",\"cabin\":\"business\",\"passengers\":[{\"name\":\"Ana\",\"age\":31},{\"name\":\"Leo\",\"age\":6}]}"
     },
-    "id": "call_04acb30a3bebb0650ca26e73"
+    "id": "call_d7a3893e47681ecd573778ec"
    }
   ],
   "text": "",
@@ -506,7 +506,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 2.03,
+  "seconds": 2.049,
   "request": {
    "max_tokens": 600,
    "temperature": 0,
